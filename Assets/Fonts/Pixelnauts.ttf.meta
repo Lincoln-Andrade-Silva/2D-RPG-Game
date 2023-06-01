@@ -1,0 +1,23 @@
+fileFormatVersion: 2
+guid: cd7b058905fe344418aa54f8f948f698
+TrueTypeFontImporter:
+  externalObjects: {}
+  serializedVersion: 4
+  fontSize: 16
+  forceTextureCase: -2
+  characterSpacing: 0
+  characterPadding: 1
+  includeFontData: 1
+  fontNames:
+  - Pixelnauts
+  fallbackFontReferences:
+  - {fileID: 12800000, guid: 42a30c87349056a438b5769d9520aef1, type: 3}
+  - {fileID: 12800000, guid: 416767b5bbdb3e24e8f385bece614050, type: 3}
+  customCharacters: 
+  fontRenderingMode: 0
+  ascentCalculationMode: 1
+  useLegacyBoundsCalculation: 0
+  shouldRoundAdvanceValue: 1
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
