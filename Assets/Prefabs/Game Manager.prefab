@@ -110,7 +110,7 @@ MonoBehaviour:
   charStats:
   - {fileID: 5968205494595528951}
   - {fileID: 1878636584881628304}
-  - {fileID: 0}
+  - {fileID: 1878636584881628304}
   menuOpen: 0
   dialogActive: 0
   fadingBetweenAreas: 0
