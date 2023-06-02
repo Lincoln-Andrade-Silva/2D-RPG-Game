@@ -7,6 +7,7 @@ public class CameraController : MonoBehaviour
 {
     public Transform target;
     public Tilemap tileMap;
+    public bool fixedCamera;
     private Vector3 bottomLeftLimit;
     private Vector3 topRightLimit;
     private float halfHeight;
@@ -25,7 +26,10 @@ public class CameraController : MonoBehaviour
         topRightLimit =
             tileMap.localBounds.max + new Vector3(-halfWidth - 0.3f, -halfHeight - 0.3f, 0f);
 
-        PlayerController.instance.SetBounds(tileMap.localBounds.min, tileMap.localBounds.max);
+        if (!fixedCamera)
+        {
+            PlayerController.instance.SetBounds(tileMap.localBounds.min, tileMap.localBounds.max);
+        }
     }
 
     // Update is called once per frame
@@ -33,17 +37,20 @@ public class CameraController : MonoBehaviour
 
     void LateUpdate()
     {
-        transform.position = new Vector3(
-            target.position.x,
-            target.position.y,
-            transform.position.z
-        );
+        if (!fixedCamera)
+        {
+            transform.position = new Vector3(
+                target.position.x,
+                target.position.y,
+                transform.position.z
+            );
 
-        //keep camera insede the bounds
-        transform.position = new Vector3(
-            Mathf.Clamp(transform.position.x, bottomLeftLimit.x, topRightLimit.x),
-            Mathf.Clamp(transform.position.y, bottomLeftLimit.y, topRightLimit.y),
-            transform.position.z
-        );
+            //keep camera insede the bounds
+            transform.position = new Vector3(
+                Mathf.Clamp(transform.position.x, bottomLeftLimit.x, topRightLimit.x),
+                Mathf.Clamp(transform.position.y, bottomLeftLimit.y, topRightLimit.y),
+                transform.position.z
+            );
+        }
     }
 }
