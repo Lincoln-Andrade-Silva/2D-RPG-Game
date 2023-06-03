@@ -8,46 +8,57 @@ public class GameMenu : MonoBehaviour
     public static GameMenu instance;
 
     public GameObject menu;
+
+    [Header("Tabs")]
     public GameObject[] windows;
 
+    [Header("Character Stats")]
     private CharStats[] charStats;
 
-    public Text[] nameTextInput,
-        hpTextInput,
-        mpTextInput,
-        lvlTextInput,
-        expTextInput;
+    public Text[] nameTextInput;
+    public Text[] hpTextInput;
+    public Text[] mpTextInput;
+    public Text[] lvlTextInput;
+    public Text[] expTextInput;
 
     public Slider[] expSliderInput;
     public Image[] charImage;
     public GameObject[] charStatHolder;
 
+    [Header("Character Details Stats")]
     public GameObject[] statusButtons;
 
-    public Text statusName,
-        statusHP,
-        statusMP,
-        statusSTR,
-        statusDEF,
-        statusWeaponEquiped,
-        statusWeaponPower,
-        statusArmorEquiped,
-        statusArmorPower,
-        statusExp;
+    public Text statusName;
+    public Text statusHP;
+    public Text statusMP;
+    public Text statusSTR;
+    public Text statusDEF;
+    public Text statusWeaponEquiped;
+    public Text statusWeaponPower;
+    public Text statusArmorEquiped;
+    public Text statusArmorPower;
+    public Text statusExp;
     public Image statusImage;
 
+    [Header("Select Item")]
     public ItemButtom[] itemButtoms;
-
     public string selectedItem;
     public Item activeItem;
-    public Text itemName,
-        itemDescription,
-        useButtonText;
+    public Text itemName;
+    public Text itemDescription;
+    public Text useButtonText;
 
+    [Header("Chose Char for Item")]
     public GameObject itemCharChoiceMenu;
     public Text[] itemCharChoiceNames;
 
+    [Header("Gold")]
     public Text goldText;
+
+    [Header("Quest")]
+    public GameObject[] questPainels;
+    public Text[] questTitle;
+    public Text[] questDescription;
 
     // Start is called before the first frame update
     void Start()
@@ -105,29 +116,6 @@ public class GameMenu : MonoBehaviour
         itemCharChoiceMenu.SetActive(false);
     }
 
-    public void DisableTabs()
-    {
-        menu.SetActive(false);
-        foreach (var statHolder in charStatHolder)
-        {
-            statHolder.SetActive(false);
-        }
-
-        foreach (var window in windows)
-        {
-            window.SetActive(false);
-        }
-        foreach (var butt in statusButtons)
-        {
-            butt.SetActive(false);
-        }
-
-        itemCharChoiceMenu.SetActive(false);
-        itemCharChoiceNames[0].transform.parent.gameObject.SetActive(false);
-        itemCharChoiceNames[1].transform.parent.gameObject.SetActive(false);
-        itemCharChoiceNames[2].transform.parent.gameObject.SetActive(false);
-    }
-
     public void OpenStats()
     {
         StatusChar(0);
@@ -135,6 +123,16 @@ public class GameMenu : MonoBehaviour
         {
             statusButtons[i].SetActive(charStats[i].gameObject.activeInHierarchy);
             statusButtons[i].GetComponentInChildren<Text>().text = charStats[i].name;
+        }
+    }
+
+    public void OpenQuests()
+    {
+        for (int i = 0; i < QuestManager.instance.quests.Count; i++)
+        {
+            questTitle[i].text = QuestManager.instance.quests[i].title;
+            questDescription[i].text = QuestManager.instance.quests[i].description;
+            questPainels[i].SetActive(true);
         }
     }
 
@@ -288,5 +286,32 @@ public class GameMenu : MonoBehaviour
         activeItem.Use(selectedChar);
         CloseItemCharChoise();
         UpdateMainInformation();
+    }
+
+    public void DisableTabs()
+    {
+        menu.SetActive(false);
+        foreach (var statHolder in charStatHolder)
+        {
+            statHolder.SetActive(false);
+        }
+
+        foreach (var window in windows)
+        {
+            window.SetActive(false);
+        }
+        foreach (var butt in statusButtons)
+        {
+            butt.SetActive(false);
+        }
+        foreach (var painel in questPainels)
+        {
+            painel.SetActive(false);
+        }
+
+        itemCharChoiceMenu.SetActive(false);
+        itemCharChoiceNames[0].transform.parent.gameObject.SetActive(false);
+        itemCharChoiceNames[1].transform.parent.gameObject.SetActive(false);
+        itemCharChoiceNames[2].transform.parent.gameObject.SetActive(false);
     }
 }
