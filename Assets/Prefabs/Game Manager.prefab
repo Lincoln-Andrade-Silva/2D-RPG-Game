@@ -1,5 +1,66 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &2249676731945250977
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 7607640436064370167}
+  - component: {fileID: 3913589918658504923}
+  m_Layer: 0
+  m_Name: Player3 Stats
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &7607640436064370167
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2249676731945250977}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 5968205494398320994}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &3913589918658504923
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2249676731945250977}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 514d75348f0f081468466c08faf47eeb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  name: Woddy
+  level: 1
+  currentEXP: 0
+  expToNextLevel: 
+  currentHP: 0
+  maxHP: 110
+  hpLevelBonus: 
+  currentMP: 0
+  maxMP: 30
+  mpLevelBonus: 
+  strength: 0
+  defence: 0
+  weaponPWR: 0
+  armorPWR: 0
+  equippedArmor: 
+  equippedWeapon: 
+  charImage: {fileID: 21300000, guid: e0ddba6d3fcf21f49949fcc95c849aac, type: 3}
 --- !u!1 &2998207381250831977
 GameObject:
   m_ObjectHideFlags: 0
@@ -92,6 +153,7 @@ Transform:
   m_Children:
   - {fileID: 5968205494595528952}
   - {fileID: 8096023606889540624}
+  - {fileID: 7607640436064370167}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -110,13 +172,12 @@ MonoBehaviour:
   charStats:
   - {fileID: 5968205494595528951}
   - {fileID: 1878636584881628304}
-  - {fileID: 1878636584881628304}
+  - {fileID: 3913589918658504923}
   menuOpen: 0
+  shopActive: 0
   dialogActive: 0
   fadingBetweenAreas: 0
   itemsHeld:
-  - Health Potion
-  - Mana Potion
   - 
   - 
   - 
@@ -159,12 +220,16 @@ MonoBehaviour:
   - 
   - 
   - 
-  numberOfItems: 0100000001000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000
+  - 
+  - 
+  numberOfItems: 0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000
   referenceItems:
   - {fileID: 5383031496335568517, guid: 90407e1087eccbb48b141e5387e2194c, type: 3}
   - {fileID: 5539525859011720567, guid: 949fc3173ef69e14e8fc398136be3ce0, type: 3}
   - {fileID: 637271915496738266, guid: 7cb4ab7e0ab142542b24660bd8ffbf79, type: 3}
   - {fileID: 275751337956654019, guid: 45bbb8e735fe42347980c8ed8b2b663d, type: 3}
+  - {fileID: 6864417010929536771, guid: df6fd2b93bd279b459b816a571a9c80e, type: 3}
+  currentGold: 0
 --- !u!1 &5968205494595528950
 GameObject:
   m_ObjectHideFlags: 0

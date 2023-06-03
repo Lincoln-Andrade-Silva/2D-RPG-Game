@@ -22,6 +22,7 @@ public class DialogManager : MonoBehaviour
     {
         instance = this;
         dialogBox.SetActive(false);
+        nameBox.SetActive(false);
     }
 
     // Update is called once per frame
@@ -29,10 +30,11 @@ public class DialogManager : MonoBehaviour
     {
         if (dialogBox.activeInHierarchy)
         {
-            if (Input.GetButtonUp("Fire1"))
+            if (Input.GetButtonUp("Fire1") || Input.GetKeyDown(KeyCode.E))
             {
                 if (currentLine >= dialogLines.Length)
                 {
+                    nameBox.SetActive(false);
                     dialogBox.SetActive(false);
                     GameManager.instance.dialogActive = false;
                 }

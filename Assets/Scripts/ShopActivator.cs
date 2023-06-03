@@ -4,7 +4,10 @@ using UnityEngine;
 
 public class ShopActivator : MonoBehaviour
 {
-    public bool canActivate;
+    private bool canActivate;
+
+    [Header("Items")]
+    public string[] itemsForSale;
 
     // Start is called before the first frame update
     void Start() { }
@@ -12,8 +15,14 @@ public class ShopActivator : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (canActivate && Input.GetButtonDown("Fire1"))
+        if (
+            canActivate
+            && Input.GetKeyDown(KeyCode.E)
+            && PlayerController.instance.canMove
+            && !Shop.instance.shopMenu.activeInHierarchy
+        )
         {
+            Shop.instance.itemsForSale = itemsForSale;
             Shop.instance.OpenShop();
         }
     }

@@ -71,7 +71,7 @@ public class GameMenu : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.B))
+        if (Input.GetKeyDown(KeyCode.B) && !GameManager.instance.shopActive)
         {
             if (menu.activeInHierarchy)
             {
@@ -279,6 +279,7 @@ public class GameMenu : MonoBehaviour
 
     public void CloseItemCharChoise()
     {
+        DeselectItem();
         itemCharChoiceMenu.SetActive(false);
     }
 

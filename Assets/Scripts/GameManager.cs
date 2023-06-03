@@ -54,11 +54,6 @@ public class GameManager : MonoBehaviour
         {
             PlayerController.instance.canMove = true;
         }
-
-        if (Input.GetKeyDown(KeyCode.J))
-        {
-            AddItem("Wood Sword");
-        }
     }
 
     public Item GetItemInformation(string item)

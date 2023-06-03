@@ -52,7 +52,7 @@ MonoBehaviour:
   isArmor: 0
   name: Mana Potion
   description: Restore 50 MP
-  value: 30
+  value: 15
   sprite: {fileID: 1232099468, guid: 0bc4ed27aef38a44bb72e80f9beb5326, type: 3}
   amoutToChange: 50
   affectHP: 0

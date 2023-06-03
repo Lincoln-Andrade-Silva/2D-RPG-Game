@@ -7,7 +7,7 @@ public class DialogActivator : MonoBehaviour
     public string name;
     public string[] lines;
     public bool isNPC;
-    
+
     private bool canActivate;
 
     // Start is called before the first frame update
@@ -18,7 +18,7 @@ public class DialogActivator : MonoBehaviour
     {
         if (
             canActivate
-            && Input.GetButtonDown("Fire1")
+            && Input.GetKeyDown(KeyCode.E)
             && !DialogManager.instance.dialogBox.activeInHierarchy
         )
         {

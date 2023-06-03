@@ -13314,6 +13314,148 @@ MonoBehaviour:
   buyMenu: {fileID: 1081795240486035082}
   sellMenu: {fileID: 5588575670715380641}
   goldText: {fileID: 5278602742034708390}
+  itemsForSale:
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  buyItemButtons:
+  - {fileID: 8653604468866582814}
+  - {fileID: 2654319037106881867}
+  - {fileID: 1429351401384673031}
+  - {fileID: 3699639135221108935}
+  - {fileID: 5929972889913287000}
+  - {fileID: 1633222821282076295}
+  - {fileID: 4498649250487913550}
+  - {fileID: 880071421767331292}
+  - {fileID: 8319367267553891341}
+  - {fileID: 8486139268323557212}
+  - {fileID: 3869822815201224906}
+  - {fileID: 7634804552514701900}
+  - {fileID: 186987573553364178}
+  - {fileID: 8066422097326089652}
+  - {fileID: 662724403540716016}
+  - {fileID: 8776236684658135154}
+  - {fileID: 763493690355900338}
+  - {fileID: 8156673396037348722}
+  - {fileID: 4740702366230402580}
+  - {fileID: 7374204857741117919}
+  - {fileID: 9129829667224088396}
+  - {fileID: 6599771381435332809}
+  - {fileID: 6725274946070469821}
+  - {fileID: 7443871527214446268}
+  - {fileID: 8962561861640211679}
+  - {fileID: 7529498565976788716}
+  - {fileID: 7574293880236477622}
+  - {fileID: 5029340906878030767}
+  - {fileID: 7599290683539738683}
+  - {fileID: 7352066983758531060}
+  - {fileID: 2026165937027729202}
+  - {fileID: 2447276581941802226}
+  - {fileID: 3988246985978181852}
+  - {fileID: 743781033003220386}
+  - {fileID: 4718552324677586099}
+  - {fileID: 8920630866181575671}
+  - {fileID: 8744709197736383927}
+  - {fileID: 7984130163563271548}
+  - {fileID: 3080609608534396771}
+  - {fileID: 6561638312516301797}
+  - {fileID: 7153185340813824689}
+  - {fileID: 64939378442779199}
+  - {fileID: 4249058305390713825}
+  - {fileID: 1886172432441594851}
+  sellItemButtons:
+  - {fileID: 8231595330024020782}
+  - {fileID: 406110819703733806}
+  - {fileID: 1126306712588963102}
+  - {fileID: 1679716510462855362}
+  - {fileID: 8856828555304836413}
+  - {fileID: 6729605828572657549}
+  - {fileID: 1218395121053865714}
+  - {fileID: 45489574914694964}
+  - {fileID: 483646115875067463}
+  - {fileID: 6774083731126572609}
+  - {fileID: 5698697646405735779}
+  - {fileID: 156639497117882856}
+  - {fileID: 3822372873762636222}
+  - {fileID: 5704323484567319828}
+  - {fileID: 3936915601396205507}
+  - {fileID: 1735184615265741082}
+  - {fileID: 4100933833618514302}
+  - {fileID: 9160351467869318070}
+  - {fileID: 244110536222404931}
+  - {fileID: 1887064054433322767}
+  - {fileID: 8222005043742819625}
+  - {fileID: 1207758310230405774}
+  - {fileID: 8782322550370185735}
+  - {fileID: 5458346623849507941}
+  - {fileID: 6726139982801072093}
+  - {fileID: 790416334730913944}
+  - {fileID: 8152841354243280514}
+  - {fileID: 6984675363241535214}
+  - {fileID: 28755556670473332}
+  - {fileID: 1318484496260293492}
+  - {fileID: 4713697599072749951}
+  - {fileID: 4169373662266158839}
+  - {fileID: 740408847081537876}
+  - {fileID: 6447723828124985071}
+  - {fileID: 4093028828748380263}
+  - {fileID: 4576409428441305280}
+  - {fileID: 7553594248700690071}
+  - {fileID: 7277253698226977992}
+  - {fileID: 180681812480224450}
+  - {fileID: 5089634912292163016}
+  - {fileID: 1430091581396859144}
+  - {fileID: 8923034309710414473}
+  - {fileID: 1871469212867204824}
+  - {fileID: 6264694122709018806}
+  selectedItem: {fileID: 0}
+  buyItemName: {fileID: 83333152918546735}
+  buyItemDescription: {fileID: 2861930634725930908}
+  buyItemValue: {fileID: 5232677948119352314}
+  sellItemName: {fileID: 1067935417648583189}
+  sellItemDescription: {fileID: 6759783552893036011}
+  sellItemValue: {fileID: 1495989494269406532}
 --- !u!114 &4814839384343429988
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -13884,7 +14026,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 2647453652809980740}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 3678317914859165041}
+        m_TargetAssemblyTypeName: Shop, Assembly-CSharp
+        m_MethodName: SellItem
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &2445952921044583881
 GameObject:
   m_ObjectHideFlags: 0
@@ -46564,7 +46718,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 8349567685964580856}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 3678317914859165041}
+        m_TargetAssemblyTypeName: Shop, Assembly-CSharp
+        m_MethodName: BuyItem
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &7898975975040687700
 GameObject:
   m_ObjectHideFlags: 0
