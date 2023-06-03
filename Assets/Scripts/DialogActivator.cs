@@ -4,9 +4,22 @@ using UnityEngine;
 
 public class DialogActivator : MonoBehaviour
 {
+    [Header("Dialogs")]
     public string name;
     public string[] lines;
+
+    [Header("Conditionals")]
     public bool isNPC;
+
+    [Header("Mark Quest")]
+    public string questToMarkTitle;
+    public bool shouldActivateQuest;
+    public bool markComplete;
+
+    [Header("Create Quest")]
+    public string title;
+    public string description;
+    public bool shouldCreateQuest;
 
     private bool canActivate;
 
@@ -23,6 +36,11 @@ public class DialogActivator : MonoBehaviour
         )
         {
             DialogManager.instance.ShowDialog(name, lines, isNPC);
+            DialogManager.instance.ShouldActivateQuestAtEnd(title, markComplete);
+            if (shouldCreateQuest)
+            {
+                DialogManager.instance.CreateQuestAtEnd(title, description);
+            }
         }
     }
 

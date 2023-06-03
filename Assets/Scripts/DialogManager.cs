@@ -13,9 +13,15 @@ public class DialogManager : MonoBehaviour
     private string speakerText;
     private string[] dialogLines;
     private int currentLine;
-    private bool knowName;
 
     public static DialogManager instance;
+
+    private string questToMark;
+    private string questTitle;
+    private string questDescription;
+    private bool shouldCreateQuest;
+    private bool markQuestComplete;
+    private bool shouldMarkQuest;
 
     // Start is called before the first frame update
     void Start()
@@ -37,6 +43,24 @@ public class DialogManager : MonoBehaviour
                     nameBox.SetActive(false);
                     dialogBox.SetActive(false);
                     GameManager.instance.dialogActive = false;
+
+                    if (shouldMarkQuest)
+                    {
+                        shouldMarkQuest = false;
+                        if (markQuestComplete)
+                        {
+                            QuestManager.instance.MarkQuestComplete(questToMark);
+                        }
+                        else
+                        {
+                            QuestManager.instance.MarkQuestIncomplete(questToMark);
+                        }
+                    }
+
+                    if (shouldCreateQuest)
+                    {
+                        QuestManager.instance.CreateQuest(questTitle, questDescription);
+                    }
                 }
                 else if ((currentLine <= dialogLines.Length))
                 {
@@ -72,5 +96,20 @@ public class DialogManager : MonoBehaviour
             nameText.text = speakerText;
             dialogText.text = dialog;
         }
+    }
+
+    public void ShouldActivateQuestAtEnd(string quest, bool markComplete)
+    {
+        questToMark = quest;
+        markQuestComplete = markComplete;
+
+        shouldMarkQuest = true;
+    }
+
+    public void CreateQuestAtEnd(string title, string description)
+    {
+        questTitle = title;
+        questDescription = description;
+        shouldCreateQuest = true;
     }
 }
