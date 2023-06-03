@@ -19,7 +19,12 @@ public class QuestManager : MonoBehaviour
 
     public void CreateQuest(string title, string description)
     {
-        quests.Add(new Quest(title, description, false));
+        Quest quest = new Quest(title, description, false);
+
+        if (!quests.Contains(quest))
+        {
+            quests.Add(quest);
+        }
     }
 
     public Quest FindQuest(string title)
