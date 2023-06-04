@@ -77,17 +77,25 @@ public class QuestManager : MonoBehaviour
         }
     }
 
+    public void HideQuest(Quest quest)
+    {
+        quest.hide = true;
+    }
+
     public void SaveQuestData()
     {
-        foreach (Quest quest in quests)
+        foreach (var quest in quests)
         {
-            if (quest.completed)
+            if (quest != null)
             {
-                PlayerPrefs.SetInt("Quest_" + quest.title, 1);
-            }
-            else
-            {
-                PlayerPrefs.SetInt("Quest_" + quest.title, 0);
+                if (quest.completed)
+                {
+                    PlayerPrefs.SetInt("Quest_" + quest.title, 1);
+                }
+                else
+                {
+                    PlayerPrefs.SetInt("Quest_" + quest.title, 0);
+                }
             }
         }
     }

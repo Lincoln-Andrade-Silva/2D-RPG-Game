@@ -7,6 +7,7 @@ public class Quest : MonoBehaviour
     public string title;
     public string description;
     public bool completed;
+    public bool hide;
 
     public Quest(string t, string d, bool c)
     {

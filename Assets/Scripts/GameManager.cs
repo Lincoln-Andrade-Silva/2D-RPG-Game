@@ -223,6 +223,7 @@ public class GameManager : MonoBehaviour
                 );
             }
         }
+        PlayerPrefs.SetInt("Player_Current_Gold", GameManager.instance.currentGold);
     }
 
     private void SaveInventoryData()
@@ -277,6 +278,7 @@ public class GameManager : MonoBehaviour
                 );
             }
         }
+        GameManager.instance.currentGold = PlayerPrefs.GetInt("Player_Current_Gold");
     }
 
     private void LoadInventoryData()

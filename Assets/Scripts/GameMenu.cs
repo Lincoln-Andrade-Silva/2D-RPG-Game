@@ -59,6 +59,7 @@ public class GameMenu : MonoBehaviour
     public GameObject[] questPainels;
     public Text[] questTitle;
     public Text[] questDescription;
+    public GameObject[] completedButtons;
 
     // Start is called before the first frame update
     void Start()
@@ -133,11 +134,38 @@ public class GameMenu : MonoBehaviour
 
     public void OpenQuests()
     {
+        UpdateQuestsPainel();
+    }
+
+    public void HideQuestPainel(int painel)
+    {
+        QuestManager.instance.quests[painel].hide = true;
+        UpdateQuestsPainel();
+    }
+
+    private void UpdateQuestsPainel()
+    {
         for (int i = 0; i < QuestManager.instance.quests.Count; i++)
         {
-            questTitle[i].text = QuestManager.instance.quests[i].title;
-            questDescription[i].text = QuestManager.instance.quests[i].description;
-            questPainels[i].SetActive(true);
+            if (QuestManager.instance.quests[i].hide == false)
+            {
+                questTitle[i].text = QuestManager.instance.quests[i].title;
+                questDescription[i].text = QuestManager.instance.quests[i].description;
+                questPainels[i].SetActive(true);
+            }
+            else
+            {
+                questPainels[i].SetActive(false);
+            }
+
+            if (QuestManager.instance.quests[i].completed)
+            {
+                completedButtons[i].SetActive(true);
+            }
+            else
+            {
+                completedButtons[i].SetActive(false);
+            }
         }
     }
 
@@ -308,6 +336,10 @@ public class GameMenu : MonoBehaviour
     {
         menu.SetActive(false);
         GameManager.instance.menuOpen = false;
+        foreach (var window in windows)
+        {
+            window.SetActive(false);
+        }
     }
 
     public void SaveGame()
