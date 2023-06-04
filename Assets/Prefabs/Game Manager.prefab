@@ -173,7 +173,7 @@ MonoBehaviour:
   charStats:
   - {fileID: 5968205494595528951}
   - {fileID: 1878636584881628304}
-  - {fileID: 3913589918658504923}
+  - {fileID: 0}
   menuOpen: 0
   shopActive: 0
   dialogActive: 0
@@ -243,8 +243,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 35497b0186f2cac49b9837e132cc651d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  questMarkerNames: []
-  questMarkersComplete: 
+  quests: []
 --- !u!1 &5968205494595528950
 GameObject:
   m_ObjectHideFlags: 0

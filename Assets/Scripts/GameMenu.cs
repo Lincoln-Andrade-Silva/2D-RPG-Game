@@ -119,10 +119,17 @@ public class GameMenu : MonoBehaviour
     public void OpenStats()
     {
         StatusChar(0);
-        for (int i = 0; i < statusButtons.Length; i++)
+        for (int i = 0; i < charStats.Length; i++)
         {
-            statusButtons[i].SetActive(charStats[i].gameObject.activeInHierarchy);
-            statusButtons[i].GetComponentInChildren<Text>().text = charStats[i].name;
+            if (
+                charStats[i] != null
+                && statusButtons[i] != null
+                && charStats[i].gameObject.activeInHierarchy
+            )
+            {
+                statusButtons[i].SetActive(true);
+                statusButtons[i].GetComponentInChildren<Text>().text = charStats[i].name;
+            }
         }
     }
 
@@ -174,7 +181,7 @@ public class GameMenu : MonoBehaviour
     {
         for (int i = 0; i < charStats.Length; i++)
         {
-            if (charStats[i].gameObject.activeInHierarchy)
+            if (charStats[i] != null && charStats[i].gameObject.activeInHierarchy)
             {
                 charStatHolder[i].SetActive(true);
 
