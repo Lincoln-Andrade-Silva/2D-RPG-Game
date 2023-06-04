@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
@@ -39,7 +40,6 @@ public class GameManager : MonoBehaviour
         }
 
         DontDestroyOnLoad(gameObject);
-
         SortItems();
     }
 
@@ -162,6 +162,129 @@ public class GameManager : MonoBehaviour
         else
         {
             Debug.LogError("Couldn't find " + item + " !");
+        }
+    }
+
+    public void SaveData()
+    {
+        SavePlayerPosition();
+        SavePlayerInfo();
+        SaveInventoryData();
+    }
+
+    public void LoadData()
+    {
+        LoadPlayerPosition();
+        LoadPlayerInfo();
+        LoadInventoryData();
+        GameMenu.instance.CloseMenu();
+    }
+
+    private void SavePlayerPosition()
+    {
+        PlayerPrefs.SetString("Current_Scene", SceneManager.GetActiveScene().name);
+        PlayerPrefs.SetFloat("Player_Position_x", PlayerController.instance.transform.position.x);
+        PlayerPrefs.SetFloat("Player_Position_y", PlayerController.instance.transform.position.y);
+        PlayerPrefs.SetFloat("Player_Position_z", PlayerController.instance.transform.position.z);
+    }
+
+    private void SavePlayerInfo()
+    {
+        foreach (var stats in charStats)
+        {
+            if (stats != null && stats.gameObject.activeInHierarchy)
+            {
+                if (stats.gameObject.activeInHierarchy)
+                {
+                    PlayerPrefs.SetInt("Player_" + stats.name + "_active", 1);
+                }
+                else
+                {
+                    PlayerPrefs.SetInt("Player_" + stats.name + "_active", 0);
+                }
+
+                PlayerPrefs.SetInt("Player_" + stats.name + "_Level", stats.level);
+                PlayerPrefs.SetInt("Player_" + stats.name + "_CurrentExp", stats.currentEXP);
+                PlayerPrefs.SetInt("Player_" + stats.name + "_CurrentHP", stats.currentHP);
+                PlayerPrefs.SetInt("Player_" + stats.name + "_MaxHP", stats.maxHP);
+                PlayerPrefs.SetInt("Player_" + stats.name + "_CurrentMP", stats.currentMP);
+                PlayerPrefs.SetInt("Player_" + stats.name + "_MaxMP", stats.maxMP);
+                PlayerPrefs.SetInt("Player_" + stats.name + "_Strength", stats.strength);
+                PlayerPrefs.SetInt("Player_" + stats.name + "_Defence", stats.defence);
+                PlayerPrefs.SetInt("Player_" + stats.name + "_WeaponPower", stats.weaponPWR);
+                PlayerPrefs.SetInt("Player_" + stats.name + "_ArmorPower", stats.armorPWR);
+                PlayerPrefs.SetString(
+                    "Player_" + stats.name + "_EquippedWeapon",
+                    stats.equippedWeapon
+                );
+                PlayerPrefs.SetString(
+                    "Player_" + stats.name + "_EquippedArmor",
+                    stats.equippedArmor
+                );
+            }
+        }
+    }
+
+    private void SaveInventoryData()
+    {
+        for (int i = 0; i < itemsHeld.Length; i++)
+        {
+            PlayerPrefs.SetString("ItemInInventory_" + i, itemsHeld[i]);
+            PlayerPrefs.SetInt("ItemAmount_" + i, numberOfItems[i]);
+        }
+    }
+
+    private void LoadPlayerPosition()
+    {
+        AreaExit.instance.LoadSceneFromLoadButton();
+        PlayerController.instance.transform.position = new Vector3(
+            PlayerPrefs.GetFloat("Player_Position_x"),
+            PlayerPrefs.GetFloat("Player_Position_y"),
+            PlayerPrefs.GetFloat("Player_Position_z")
+        );
+    }
+
+    private void LoadPlayerInfo()
+    {
+        foreach (var stats in charStats)
+        {
+            if (stats != null && stats.gameObject.activeInHierarchy)
+            {
+                if (PlayerPrefs.GetInt("Player_" + stats.name + "_active") == 0)
+                {
+                    stats.gameObject.SetActive(false);
+                }
+                else
+                {
+                    stats.gameObject.SetActive(true);
+                }
+
+                stats.level = PlayerPrefs.GetInt("Player_" + stats.name + "_Level");
+                stats.currentEXP = PlayerPrefs.GetInt("Player_" + stats.name + "_CurrentExp");
+                stats.currentHP = PlayerPrefs.GetInt("Player_" + stats.name + "_CurrentHP");
+                stats.maxHP = PlayerPrefs.GetInt("Player_" + stats.name + "_MaxHP");
+                stats.currentMP = PlayerPrefs.GetInt("Player_" + stats.name + "_CurrentMP");
+                stats.maxMP = PlayerPrefs.GetInt("Player_" + stats.name + "_MaxMP");
+                stats.strength = PlayerPrefs.GetInt("Player_" + stats.name + "_Strength");
+                stats.defence = PlayerPrefs.GetInt("Player_" + stats.name + "_Defence");
+                stats.weaponPWR = PlayerPrefs.GetInt("Player_" + stats.name + "_WeaponPower");
+                stats.armorPWR = PlayerPrefs.GetInt("Player_" + stats.name + "_ArmorPower");
+                stats.equippedWeapon = PlayerPrefs.GetString(
+                    "Player_" + stats.name + "_EquippedWeapon"
+                );
+                stats.equippedArmor = PlayerPrefs.GetString(
+                    "Player_" + stats.name + "_EquippedArmor"
+                );
+            }
+        }
+    }
+
+    private void LoadInventoryData()
+    {
+        for (int i = 0; i < itemsHeld.Length; i++)
+        {
+            itemsHeld[i] = PlayerPrefs.GetString("ItemInInventory_" + i);
+            numberOfItems[i] = PlayerPrefs.GetInt("ItemAmount_" + i);
         }
     }
 }

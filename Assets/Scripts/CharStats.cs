@@ -39,13 +39,7 @@ public class CharStats : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
-    {
-        if (Input.GetKeyDown(KeyCode.K))
-        {
-            AddEXP(1000);
-        }
-    }
+    void Update() { }
 
     public void AddEXP(int EXP)
     {

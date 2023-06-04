@@ -50,7 +50,7 @@ public class GameMenu : MonoBehaviour
 
     [Header("Chose Char for Item")]
     public GameObject itemCharChoiceMenu;
-    public Text[] itemCharChoiceNames;
+    public GameObject[] itemCharChoiceButtons;
 
     [Header("Gold")]
     public Text goldText;
@@ -76,7 +76,6 @@ public class GameMenu : MonoBehaviour
         }
 
         DontDestroyOnLoad(gameObject);
-        DisableTabs();
     }
 
     // Update is called once per frame
@@ -86,8 +85,7 @@ public class GameMenu : MonoBehaviour
         {
             if (menu.activeInHierarchy)
             {
-                DisableTabs();
-                GameManager.instance.menuOpen = false;
+                CloseMenu();
             }
             else
             {
@@ -273,12 +271,23 @@ public class GameMenu : MonoBehaviour
     {
         itemCharChoiceMenu.SetActive(true);
 
-        for (int i = 0; i < itemCharChoiceNames.Length; i++)
+        for (int i = 0; i < itemCharChoiceButtons.Length; i++)
         {
-            itemCharChoiceNames[i].text = GameManager.instance.charStats[i].name;
-            itemCharChoiceNames[i].transform.parent.gameObject.SetActive(
-                GameManager.instance.charStats[i].gameObject.activeInHierarchy
-            );
+            if (
+                itemCharChoiceButtons[i] != null
+                && GameManager.instance.charStats[i] != null
+                && GameManager.instance.charStats[i].gameObject.activeInHierarchy
+            )
+            {
+                itemCharChoiceButtons[i].SetActive(true);
+                itemCharChoiceButtons[i].GetComponentInChildren<Text>().text = GameManager
+                    .instance
+                    .charStats[i].name;
+            }
+            else
+            {
+                itemCharChoiceButtons[i].SetActive(false);
+            }
         }
     }
 
@@ -295,30 +304,21 @@ public class GameMenu : MonoBehaviour
         UpdateMainInformation();
     }
 
-    public void DisableTabs()
+    public void CloseMenu()
     {
         menu.SetActive(false);
-        foreach (var statHolder in charStatHolder)
-        {
-            statHolder.SetActive(false);
-        }
+        GameManager.instance.menuOpen = false;
+    }
 
-        foreach (var window in windows)
-        {
-            window.SetActive(false);
-        }
-        foreach (var butt in statusButtons)
-        {
-            butt.SetActive(false);
-        }
-        foreach (var painel in questPainels)
-        {
-            painel.SetActive(false);
-        }
+    public void SaveGame()
+    {
+        GameManager.instance.SaveData();
+        QuestManager.instance.SaveQuestData();
+    }
 
-        itemCharChoiceMenu.SetActive(false);
-        itemCharChoiceNames[0].transform.parent.gameObject.SetActive(false);
-        itemCharChoiceNames[1].transform.parent.gameObject.SetActive(false);
-        itemCharChoiceNames[2].transform.parent.gameObject.SetActive(false);
+    public void LoadGame()
+    {
+        GameManager.instance.LoadData();
+        QuestManager.instance.LoadQuestData();
     }
 }

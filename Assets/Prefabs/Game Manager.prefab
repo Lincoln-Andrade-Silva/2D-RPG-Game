@@ -109,10 +109,10 @@ MonoBehaviour:
   level: 1
   currentEXP: 0
   expToNextLevel: 
-  currentHP: 0
+  currentHP: 110
   maxHP: 110
   hpLevelBonus: 
-  currentMP: 0
+  currentMP: 30
   maxMP: 30
   mpLevelBonus: 
   strength: 0
@@ -292,10 +292,10 @@ MonoBehaviour:
   level: 1
   currentEXP: 0
   expToNextLevel: 
-  currentHP: 0
+  currentHP: 100
   maxHP: 100
   hpLevelBonus: 
-  currentMP: 0
+  currentMP: 25
   maxMP: 25
   mpLevelBonus: 
   strength: 0

@@ -37,7 +37,6 @@ public class QuestManager : MonoBehaviour
     {
         if (title != null)
         {
-            Debug.Log(title);
             Quest quest = FindQuest(title);
             return quest.completed;
         }
@@ -74,6 +73,41 @@ public class QuestManager : MonoBehaviour
             for (int i = 0; i < questObjects.Length; i++)
             {
                 questObjects[i].CheckCompletion();
+            }
+        }
+    }
+
+    public void SaveQuestData()
+    {
+        foreach (Quest quest in quests)
+        {
+            if (quest.completed)
+            {
+                PlayerPrefs.SetInt("Quest_" + quest.title, 1);
+            }
+            else
+            {
+                PlayerPrefs.SetInt("Quest_" + quest.title, 0);
+            }
+        }
+    }
+
+    public void LoadQuestData()
+    {
+        foreach (Quest quest in quests)
+        {
+            int valueToSet = 0;
+            if (PlayerPrefs.HasKey("Quest_" + quest.title))
+            {
+                valueToSet = PlayerPrefs.GetInt("Quest_" + quest.title);
+            }
+            if (valueToSet == 0)
+            {
+                quest.completed = false;
+            }
+            else
+            {
+                quest.completed = true;
             }
         }
     }

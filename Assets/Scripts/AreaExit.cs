@@ -5,6 +5,7 @@ using UnityEngine.SceneManagement;
 
 public class AreaExit : MonoBehaviour
 {
+    public static AreaExit instance;
     public string areaToLoad;
     public string areaTransitionName;
     public float waitToLoad;
@@ -12,7 +13,10 @@ public class AreaExit : MonoBehaviour
     private bool shouldLoadAfterFade;
 
     // Start is called before the first frame update
-    void Start() { }
+    void Start()
+    {
+        instance = this;
+    }
 
     // Update is called once per frame
     void Update()
@@ -38,5 +42,13 @@ public class AreaExit : MonoBehaviour
 
             PlayerController.instance.areaTransitionName = areaTransitionName;
         }
+    }
+
+    public void LoadSceneFromLoadButton()
+    {
+        areaToLoad = PlayerPrefs.GetString("Current_Scene");
+        shouldLoadAfterFade = true;
+        GameManager.instance.fadingBetweenAreas = true;
+        UIFade.instance.FadeToBlack();
     }
 }

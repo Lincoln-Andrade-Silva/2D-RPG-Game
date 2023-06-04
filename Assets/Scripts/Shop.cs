@@ -35,7 +35,6 @@ public class Shop : MonoBehaviour
     void Start()
     {
         instance = this;
-        shopMenu.SetActive(false);
     }
 
     // Update is called once per frame
